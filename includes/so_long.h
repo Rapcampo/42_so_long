@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "../minilibx/mlx.h"
+# include "../minilibx/mlx.h" 
 
 # ifndef INT_MAX
 #  define INT_MAX 2147483647
