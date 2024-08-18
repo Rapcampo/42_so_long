@@ -49,12 +49,12 @@ typedef struct s_window
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	int		*height;
-	int		*width;
+	int		height;
+	int		width;
 	int		line_lenght;
 	int		bpp;
-	char	*addr;
 	int		endian;
+	char	*addr;
 }	t_window;
 
 // struct for coordinates
@@ -69,9 +69,23 @@ typedef struct s_point
 
 typedef struct s_assets
 {
-	char	**map;
 	void	*sprites;
+	int		width;
+	int		height;
 }	t_assets;
+
+
+// struct for map
+
+typedef struct s_map
+{
+	char	**map;
+	int		cols;
+	int		rows;
+	int		num_items;
+	int		num_exit;
+	int		num_player;
+}	t_map;
 
 // strct for gamestate
 
@@ -79,6 +93,9 @@ typedef struct s_game
 {
 	t_window	win;
 	t_point		curr;
+	t_point		next;
+	t_map		*map;
+	t_assets	*assets;
 	int			moves;
 	int			collect;
 }	t_game;
