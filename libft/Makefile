@@ -1,14 +1,14 @@
 # ================================= Files ======================================
 
 NAME	= libft.a
-SOURCE	= $(foreach dir, $(SOURCE_DIR), $(wildcard $(dir)/ft_*.c)) 
+SOURCE	= $(foreach dir, $(SOURCE_DIR), $(wildcard $(dir)/*.c)) 
 OBJS	= objs/*.o
 DEPFLG	= -MP -MD
 
 # ============================ Folder Structures ===============================
 
 HEADERS		= ../includes/
-SOURCE_DIR	= srcs/ctype srcs/list srcs/stdio srcs/stdlib srcs/string srcs/prinft
+SOURCE_DIR	= srcs/ctype srcs/list srcs/stdio srcs/stdlib srcs/string srcs/prinft srcs/gnl
 OBJS_DIR	= objs/
 
 # ============================ Commands & Flags ===============================
