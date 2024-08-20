@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../minilibx/mlx.h"
+#include "../mlx/mlx.h"
 
 int main(int argc, char *argv[])
 {

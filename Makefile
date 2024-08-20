@@ -15,7 +15,7 @@
 NAME	= so_long
 BONUS	= so_long_bonus
 LIBFT	= -L ./libft
-MLX	= -L minilibx 
+MLX		= -L ./mlx
 SOURCE	= srcs/*.c
 OBJS	= objs/*.o
 DEPFLG	= -MP -MD
@@ -25,7 +25,7 @@ DEPFLG	= -MP -MD
 HEADERS		= includes
 SOURCE_DIR	= srcs
 LIBFT_DIR	= libft
-MLX_DIR		= minilibx
+MLX_DIR		= mlx
 OBJS_DIR	= objs
 
 # ============================ Commands & Flags ===============================
@@ -36,7 +36,7 @@ AR			= ar -rcs
 FLAGS		= -Wall -Werror -Wextra -I$(HEADERS) -g -O3 #$(DEPFLG)
 MAKE_FLAG	= --no-print-directory
 LDLIBS		= -lft
-MLX_FLAGS	= -lmlx -lX11 -lXext
+MLX_FLAGS	= -lmlx -lX11 -lXext -lm
 
 # =========================== Ansi Escape Codes ================================
 
@@ -59,27 +59,27 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)libft$(RESET)"
 	make $(MAKE_FLAG) -C $(LIBFT_DIR)
+	make $(MAKE_FLAG) -sC $(MLX_DIR)
 	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
-	$(CC) $(FLAGS) $(LIBFT) $(LDLIBS) $(MLX) $(MLX_FLAGS) -o $@ $^  
+	$(CC) $(FLAGS) $(LIBFT) $(MLX) -o $@ $^ $(LDLIBS) $(MLX_FLAGS)
 	echo "\n*************************$(GREEN)$(BLINK)    [Compilation Sucessfull!]    $(RESET)*************************\n"
 
 $(OBJS): 
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
-	make $(MAKE_FLAG) -C $(MLX_DIR) -s
 	mkdir -p objs
-	$(CC) $(FLAGS) -c $(SOURCE)
+	$(CC) $(FLAGS) -c $(SOURCE) -I $(HEADERS)
 	mv *.o $(OBJS_DIR)
 
 clean:
 	make clean $(MAKE_FLAG) -C $(LIBFT_DIR)
-	make clean $(MAKE_FLAG) -C $(MLX_DIR) -s
+	make clean $(MAKE_FLAG) -sC $(MLX_DIR)
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
 	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)So_long Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	make fclean $(MAKE_FLAG) -C $(LIBFT_DIR)
-	make clean $(MAKE_FLAG) -C $(MLX_DIR) -s
+	make clean $(MAKE_FLAG) -sC $(MLX_DIR)
 	$(RM) $(NAME)
 	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)So_long Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
