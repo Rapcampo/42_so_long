@@ -63,4 +63,6 @@ show:
 clean	:
 	rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core
 
+.SILENT:
+
 .PHONY: all check show clean

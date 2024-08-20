@@ -25,6 +25,7 @@ DEPFLG	= -MP -MD
 HEADERS		= includes
 SOURCE_DIR	= srcs
 LIBFT_DIR	= libft
+MLX_DIR		= minilibx
 OBJS_DIR	= objs
 
 # ============================ Commands & Flags ===============================
@@ -35,7 +36,7 @@ AR			= ar -rcs
 FLAGS		= -Wall -Werror -Wextra -I$(HEADERS) -g -O3 #$(DEPFLG)
 MAKE_FLAG	= --no-print-directory
 LDLIBS		= -lft
-MLX_FLAGS	= -lmlx_linux -lx11 -LXext
+MLX_FLAGS	= -lmlx -lX11 -lXext
 
 # =========================== Ansi Escape Codes ================================
 
@@ -59,23 +60,26 @@ $(NAME): $(OBJS)
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)libft$(RESET)"
 	make $(MAKE_FLAG) -C $(LIBFT_DIR)
 	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
-	$(CC) $(FLAGS) $(LIBFT) -o $@ $^ $(LDLIBS) 
+	$(CC) $(FLAGS) $(LIBFT) $(LDLIBS) $(MLX) $(MLX_FLAGS) -o $@ $^  
 	echo "\n*************************$(GREEN)$(BLINK)    [Compilation Sucessfull!]    $(RESET)*************************\n"
 
 $(OBJS): 
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
+	make $(MAKE_FLAG) -C $(MLX_DIR) -s
 	mkdir -p objs
 	$(CC) $(FLAGS) -c $(SOURCE)
 	mv *.o $(OBJS_DIR)
 
 clean:
 	make clean $(MAKE_FLAG) -C $(LIBFT_DIR)
+	make clean $(MAKE_FLAG) -C $(MLX_DIR) -s
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
 	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)So_long Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	make fclean $(MAKE_FLAG) -C $(LIBFT_DIR)
+	make clean $(MAKE_FLAG) -C $(MLX_DIR) -s
 	$(RM) $(NAME)
 	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)So_long Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
