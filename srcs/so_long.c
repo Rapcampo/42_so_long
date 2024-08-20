@@ -15,15 +15,16 @@
 
 int main(int argc, char *argv[])
 {
+	(void)argv;
 	t_window mlx;
-	mlx.width = ft_atoi(argv[0]);
-	mlx.height = ft_atoi(argv[1]);
+	mlx.width = 1920; 
+	mlx.height = 1080;
 	if (argc == 4)
 	{
 		mlx.mlx_ptr = mlx_init();
 		if (!mlx.mlx_ptr)
 			return (-1);
-		mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.width, mlx.height, argv[2]);
+		mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.width, mlx.height, "test");
 		if (!mlx.win_ptr)
 			return (-1);
 		mlx_loop(mlx.mlx_ptr);
