@@ -12,6 +12,14 @@
 
 #include "../includes/so_long.h"
 
+int	map_extension(char *map_name)
+{
+	auto int	i = ft_strlen(map_name);
+	if (!(ft_strnstr((map_name + (i - 4)), ".ber", 4)))
+		return (2);
+	return (0);
+}
+
 void	ft_err(int err)
 {
 	if (err == -1)

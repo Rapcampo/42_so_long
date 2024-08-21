@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "../mlx/mlx.h"
+# include <fcntl.h>
 //# include <X11/X.h>
 //# include <X11/keysym.h>
 
@@ -128,6 +129,19 @@ typedef enum e_event
 	E_DESTROY	= 17
 }	t_event;
 
+//error checking and map parsing
+
 void	ft_err(int err);
+int	map_extension(char *map_name);
+int	map_check(char **map);
+
+//movement function and counting functions
+
+void	print_map(char **map);
+void	player_location(t_game *game);
+
+//free and memory management
+
+
 
 #endif
