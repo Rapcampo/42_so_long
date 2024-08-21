@@ -128,4 +128,6 @@ typedef enum e_event
 	E_DESTROY	= 17
 }	t_event;
 
+void	ft_err(int err);
+
 #endif
