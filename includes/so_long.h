@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/17 16:08:20 by rapcampo          #+#    #+#             */
-/*   Updated: 2024/08/17 16:17:23 by rapcampo         ###   ########.fr       */
+/*   Created: 2024/08/21 21:22:06 by rapcampo          #+#    #+#             */
+/*   Updated: 2024/08/21 21:33:23 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,48 +22,36 @@
 //# include <X11/X.h>
 //# include <X11/keysym.h>
 
-// Keysyms for keypresses
-
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_W 119
-# define KEY_ESC 65307
-# define KEY_UP 65362
-# define KEY_DOWN 65364
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
-
 // defines for assets
 # define MAX_SPRITES 5
-# define ENTITIES "01CEP"
 # define BG_SPRITE "../assets/sprites/background.xpm"
 # define WALL_SPRITE "../assets/sprites/wall.xpm"
 # define PLAYER_SPRITE "../assets/sprites/player.xpm"
 # define COLLECT_SPRITE "../assets/sprites/collectable.xpm"
 # define EXIT_SPRITE "../assets/sprites/exit.xpm"
+# define SIZE 48
 
-// struct for mlx
+// defines for print colours
 
-typedef struct s_window
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		height;
-	int		width;
-	int		line_lenght;
-	int		bpp;
-	int		endian;
-	char	*addr;
-}	t_window;
+# define RESET "\e[0m"
+# define ULINE "\e[4m"
+# define BLINK "\e[5m"
+# define BLACK "\e[1;30m"
+# define RED "\e[1;31m"
+# define GREEN "\e[1;32m"
+# define YELLOW "\e[1;33m"
+# define BLUE  "\e[1;34m"
+# define PURPLE "\e[1;35m"
+# define CYAN "\e[1;36m"
+# define WHITE "\e[1;37m"
 
 // struct for coordinates
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-}	t_point;
+	unsigned int	x;
+	unsigned int	y;
+}		t_point;
 
 // struct for assets
 
@@ -80,25 +67,31 @@ typedef struct s_assets
 
 typedef struct s_map
 {
-	char	**map;
-	int		cols;
-	int		rows;
-	int		num_items;
-	int		num_exit;
-	int		num_player;
-}	t_map;
+	char				**map_matrix;
+	unsigned int		cols;
+	unsigned int		rows;
+	unsigned int		num_items;
+	unsigned int		num_exit;
+	unsigned int		num_player;
+	int					height;
+	int					width;
+}						t_map;
 
 // strct for gamestate
 
 typedef struct s_game
 {
-	t_window	win;
-	t_point		curr;
-	t_point		next;
-	t_map		*map;
-	t_assets	*assets;
-	int			moves;
-	int			collect;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	t_point			curr;
+	t_point			next;
+	t_point			exit;
+	t_map			*map;
+	t_assets		*assets;
+	unsigned int	moves;
+	unsigned int	collect;
+	unsigned int	path;
+	unsigned int	path_collect;
 }	t_game;
 
 // enum for map entities
@@ -110,7 +103,33 @@ typedef enum e_entity
 	POTION = 'C',
 	EXIT = 'E',
 	PLAYER = 'P'
-}	t_entity; 
+}	t_entity;
+
+//enum for keysyms
+
+typedef enum s_keys
+{
+	ESC = 65307,
+	A = 97,
+	S = 115,
+	D = 100,
+	W = 119,
+	Q = 113,
+	UP = 65362,
+	DOWN = 65364,
+	RIGHT = 65363,
+	LEFT = 65361
+}	t_key;
+
+typedef enum e_index
+{
+	F1,
+	W1,
+	P1,
+	C1,
+	E1,
+	E2,
+}			t_index;
 
 // enum for event hook mask
 // defined in x11/x.h 
@@ -131,17 +150,28 @@ typedef enum e_event
 
 //error checking and map parsing
 
-void	ft_err(int err);
-int	map_extension(char *map_name);
-int	map_check(char **map);
-
-//movement function and counting functions
-
-void	print_map(char **map);
-void	player_location(t_game *game);
+void	put_images(t_game *game, t_point pos);
+void	floodfill(t_game *game, char **matrix, t_point curr);
+void	map_assets(t_game *game);
+void	valid_map(t_game *game);
 
 //free and memory management
 
+void	destroy_matrix(char **map_matrix);
+void	destroy_map(t_map *map);
+void	destroy_images(t_game *game);
+void	destroy_game(t_game *game);
 
+//game functions
+
+void		exit_message(t_game *game, char *message);
+void		init_game(char *map_name);
+int			quit(t_game *game);
+t_entity	pos(t_game *game, t_point pos);
+int			check_move(t_game *game, t_point next);
+void		move_player(t_game *game);
+void		start_game(t_game *game);
+int			put_game(t_game *game);
+int			key_press(int keycode, t_game *game);
 
 #endif
