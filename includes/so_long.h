@@ -100,7 +100,7 @@ typedef enum e_entity
 {
 	FLOOR = '0',
 	WALL = '1',
-	POTION = 'C',
+	COL = 'C',
 	EXIT = 'E',
 	PLAYER = 'P'
 }	t_entity;
