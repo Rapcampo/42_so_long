@@ -12,10 +12,67 @@
 
 #include "../includes/so_long.h"
 
+static int	map_rectangular(t_map *map)
+{
+	auto int	i = -1;
+	auto size_t	colums = ft_strlen(map->map_matrix[i]);
+	while (map->map_matrix[++i])
+		if (ft_strlen(map->map_matrix[i] != colums))
+			return (0);
+	map->cols = colums;
+	return (1);
+}
+
+static int	map_components(t_game *game)
+{
+	auto int i = -1;
+	auto int j = -1;
+	while (game->map->map_matrix[++i])
+	{
+		j = -1;
+		while (game->map->map_matrix[i][++j])
+		{
+			if (game->map->map_matrix[i][j] == 'C')
+				game->map->num_items++;
+			else if (game->map->map_matrix[i][j] == 'P')
+				game->map->num_player++;
+			else if (game->map->map_matrix[i][j] == 'E')
+				game->map->num_exit++;
+			else if (game->map->map_matrix[i][j] != '0' &&
+					game->map->map_matrix[i][j] != '1')
+					exit_message(game, "\e[5;1;31Invalid characters.\n\e[0m");
+		}
+	}
+	map_assets(game);
+	if (game->map->num_items >= 1 && game->map->num_exit == 1 &&
+		game->map->num_player == 1)
+		return (1);
+	return (0);
+}
 
 static int	map_walls(t_map *map)
 {
-	
+	auto unsigned int	i = -1;
+	auto unsigned int	j = -1;	
+	while (map->map_matrix[++i])
+	{
+		j = -1;
+		if (i == 0 || i == map->rows)
+		{
+			while (map->map_matrix[i][++j])
+			{
+				if (map->map_matrix[i][j] != '1')
+					return(0);
+			}
+		}
+		else
+		{
+			if (map->map_matrix[i][0] != '1' ||
+			map->map_matrix[i][map->cols -1] != '1')
+				return (0);
+		}
+	}
+	return (1);
 }
 
 static int	map_path(t_game *game)
