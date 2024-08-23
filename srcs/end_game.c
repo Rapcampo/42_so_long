@@ -25,7 +25,7 @@ void	destroy_images(t_game *game)
 {
 	auto int i = -1;
 	while (++i < NUM_ASSETS)
-		mlx_destroy_image(game->mlx_ptr, game->assets[i].sprites);
+		mlx_destroy_image(game->mlx_ptr, game->assets[i].img);
 	free(game->assets);
 }
 

@@ -23,14 +23,16 @@
 //# include <X11/keysym.h>
 
 // defines for assets
-# define MAX_SPRITES 5
-# define BG_SPRITE "../assets/sprites/background.xpm"
-# define WALL_SPRITE "../assets/sprites/wall.xpm"
-# define PLAYER_SPRITE "../assets/sprites/player.xpm"
-# define COLLECT_SPRITE "../assets/sprites/collectable.xpm"
-# define EXIT_SPRITE "../assets/sprites/exit.xpm"
+# define MAX_SPRITES 7
+# define BG_SPRITE "./assets/sprites/background.xpm"
+# define WALL_SPRITE "./assets/sprites/wall.xpm"
+# define PLAYER_SPRITE "./assets/sprites/player.xpm"
+# define PE_SPRITE "./assets/sprites/player_exit.xpm"
+# define COLLECT_SPRITE "./assets/sprites/collectable.xpm"
+# define EXIT_SPRITE "./assets/sprites/exit.xpm"
+# define OE_SPRITE "./assets/sprites/open_exit.xpm"
 # define SIZE 48
-# define NUM_ASSETS 6
+# define NUM_ASSETS 7
 
 // defines for print colours
 
@@ -58,7 +60,7 @@ typedef struct s_point
 
 typedef struct s_assets
 {
-	void	*sprites;
+	void	*img;
 	int		width;
 	int		height;
 }	t_assets;
@@ -123,6 +125,17 @@ typedef enum s_keys
 	RIGHT = 65363,
 	LEFT = 65361
 }	t_key;
+
+typedef enum e_index
+{
+	F1,
+	W1,
+	P1,
+	P2,
+	C1,
+	E1,
+	E2,
+}			t_index;
 
 // enum for event hook mask
 // defined in x11/x.h 
