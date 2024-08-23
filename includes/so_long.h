@@ -103,7 +103,9 @@ typedef enum e_entity
 	WALL = '1',
 	COL = 'C',
 	EXIT = 'E',
-	PLAYER = 'P'
+	PLAYER = 'P',
+	PLAYER_EXIT = 'X',
+	OPEN_EXIT = 'O'
 }	t_entity;
 
 //enum for keysyms
@@ -121,16 +123,6 @@ typedef enum s_keys
 	RIGHT = 65363,
 	LEFT = 65361
 }	t_key;
-
-typedef enum e_index
-{
-	F1,
-	W1,
-	P1,
-	C1,
-	E1,
-	E2,
-}			t_index;
 
 // enum for event hook mask
 // defined in x11/x.h 
