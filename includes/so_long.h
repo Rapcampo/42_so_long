@@ -24,13 +24,13 @@
 
 // defines for assets
 # define MAX_SPRITES 7
-# define BG_SPRITE "./assets/sprites/background.xpm"
-# define WALL_SPRITE "./assets/sprites/wall.xpm"
-# define PLAYER_SPRITE "./assets/sprites/player.xpm"
-# define PE_SPRITE "./assets/sprites/player_exit.xpm"
-# define COLLECT_SPRITE "./assets/sprites/collectable.xpm"
-# define EXIT_SPRITE "./assets/sprites/exit.xpm"
-# define OE_SPRITE "./assets/sprites/open_exit.xpm"
+# define BG_SPRITE "./sprites/background.xpm"
+# define WALL_SPRITE "./sprites/wall.xpm"
+# define PLAYER_SPRITE "./sprites/player.xpm"
+# define PE_SPRITE "./sprites/player_exit.xpm"
+# define COLLECT_SPRITE "./sprites/collectable.xpm"
+# define EXIT_SPRITE "./sprites/exit.xpm"
+# define OE_SPRITE "./sprites/open_exit.xpm"
 # define SIZE 48
 # define NUM_ASSETS 7
 
