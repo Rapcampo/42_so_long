@@ -14,7 +14,7 @@
 
 static int	valid_map_name(char *map_name)
 {
-	auto int	i = ft_strlen(map_name);
+	auto int i = ft_strlen(map_name);
 	if (!(ft_strnstr((map_name + (i - 4)), ".ber", 4)))
 		return (0);
 	return (1);
@@ -22,7 +22,7 @@ static int	valid_map_name(char *map_name)
 
 int	main(int argc, char **argv)
 {
-	auto char	*map_name = argv[1];
+	auto char *map_name = argv[1];
 	if (argc != 2)
 		ft_putstr_fd("\e[5;1;31mERROR!\n\e[0mPlease, insert a map", 2);
 	else if (!valid_map_name(map_name))
@@ -30,6 +30,5 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("\e[5;1;31mERROR!\n\e[0mMAP is not .ber file", 2);
 		exit(1);
 	}
-	init_game(map_name);
-	return (0);
+	return (init_game(map_name), 0);
 }
