@@ -30,6 +30,7 @@
 # define COLLECT_SPRITE "../assets/sprites/collectable.xpm"
 # define EXIT_SPRITE "../assets/sprites/exit.xpm"
 # define SIZE 48
+# define NUM_ASSETS 6
 
 // defines for print colours
 

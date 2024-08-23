@@ -14,15 +14,13 @@
 
 static int	get_num_lines(t_game *game, char *map_name)
 {
-	char	*temp;
-
 	auto int	lines = 0;
 	auto int	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
 		exit_message(game, "\e[5;1;31mCould not read map file.\n\e[0m");
 	while (1)
 	{
-		temp = get_next_line(fd);
+		auto char *temp = get_next_line(fd);
 		if (!temp)
 			break ;
 		lines++;
@@ -43,15 +41,11 @@ static t_map	*new_map(unsigned int colums, unsigned int rows)
 		destroy_matrix(map->map_matrix);
 		return (NULL);
 	}
-	map->cols = colums;
-	map->rows = rows;
-	return (map);
+	return (map->cols = colums, map->rows = rows, map);
 }
 
 static	t_map	*read_map(t_game *game, char *map_name)
 {
-	char	*temp;
-
 	auto int	i = -1;
 	game->map = new_map(0, get_num_lines(game, map_name));
 	if (!game->map)
@@ -61,7 +55,7 @@ static	t_map	*read_map(t_game *game, char *map_name)
 		exit_message(game, "\e[5;1;31mCould not read map file.\n\e[0m");
 	while (++i < game->map->rows)
 	{
-		temp = get_next_line(fd);
+		auto char *temp = get_next_line(fd);
 		if (temp)
 			exit_message(game, "\e[5;1;31mCould not get lines from map.\n\e[0m");
 		game->map->map_matrix[i] = ft_strtrim(temp, "\n");
@@ -69,9 +63,7 @@ static	t_map	*read_map(t_game *game, char *map_name)
 			exit_message(game, "\e[5;1;31mError in alloc map bytes.\n\e[0m");
 		free(temp);
 	}
-	game->map->map_matrix[i] = NULL;
-	close(fd);
-	return (game->map);
+	return (game->map->map_matrix[i] = NULL, close(fd), game->map);
 }
 
 void	init_game(char *map_name)
