@@ -24,10 +24,13 @@ int	main(int argc, char **argv)
 {
 	auto char *map_name = argv[1];
 	if (argc != 2)
-		ft_putstr_fd("\e[5;1;31mERROR!\n\e[0mPlease, insert a map", 2);
+	{
+		ft_putstr_fd("\e[5;1;31mERROR!\n\e[0mPlease, insert a map\n", 2);
+		exit(1);
+	}
 	else if (!valid_map_name(map_name))
 	{
-		ft_putstr_fd("\e[5;1;31mERROR!\n\e[0mMAP is not .ber file", 2);
+		ft_putstr_fd("\e[5;1;31mERROR!\n\e[0mMAP is not .ber file\n", 2);
 		exit(1);
 	}
 	return (init_game(map_name), 0);

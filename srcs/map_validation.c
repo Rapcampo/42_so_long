@@ -80,7 +80,7 @@ static int	map_path(t_game *game)
 	auto int i = -1;
 	auto char **map_matrix = malloc(sizeof(char *) * (game->map->rows + 1));
 	if (!map_matrix)
-		exit_message(game, "\e[5;1;31Malloc Error.\n\e[0m");
+		exit_message(game, BLINK RED "Malloc Error.\n" RESET);
 	while (game->map->map_matrix[++i])
 		map_matrix[i] = ft_strdup(game->map->map_matrix[i]);
 	map_matrix[i] = NULL;
@@ -92,15 +92,15 @@ static int	map_path(t_game *game)
 void	valid_map(t_game *game)
 {
 	if (!game->map->map_matrix[0])
-		exit_message(game, "\e[5;1;31mMap empty.\n\e[0m");
+		exit_message(game, BLINK RED "Map empty.\n" RESET);
 	if (!map_rectangular(game->map))
-		exit_message(game, "\e[5;1;31mMap format is not rectangular.\n\e[0m");
+		exit_message(game, BLINK RED "Map format is not rectangular.\n" RESET);
 	if (!map_components(game))
-		exit_message(game, "\e[5;1;31mMap assets are not valid.\n\e[0m");
+		exit_message(game, BLINK RED "Map assets are not valid.\n" RESET);
 	if (!map_walls(game->map))
-		exit_message(game, "\e[5;1;31mMap is missing walls.\n\e[0m");
+		exit_message(game, BLINK RED "Map is missing walls.\n" RESET);
 	if (!map_path(game))
-		exit_message(game, "\e[5;1;31mMap path is not valid.\n\e[0m");
+		exit_message(game, BLINK RED "Map path is not valid.\n" RESET);
 	game->map->width = game->map->cols * SIZE;
 	game->map->height = game->map->rows * SIZE;
 }
