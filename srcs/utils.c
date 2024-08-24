@@ -17,7 +17,7 @@ void	floodfill(t_game *game, char **matrix, t_point curr)
 	if (curr.y < 0 || curr.x < 0 ||
 			curr.y >= game->map->rows || curr.x >= game->map->cols)
 		return ;
-	if (matrix[curr.y][curr.x] == 1)
+	if (matrix[curr.y][curr.x] == '1')
 		return ;
 	else if (matrix[curr.y][curr.x] == 'C')
 		game->path_collect++;

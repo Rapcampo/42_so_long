@@ -48,18 +48,18 @@ static	t_map	*read_map(t_game *game, char *map_name)
 	auto int i = -1;
 	game->map = new_map(0, get_num_lines(game, map_name));
 	if (!game->map)
-		exit_message(game, "\e[5;1;31mMap could not be alloc'ed.\n\e[0m");
+		exit_message(game, BLINK RED "Map could not be alloc'ed.\n" RESET);
 	auto int fd = open(map_name, O_RDONLY);
 	if (fd < 0)
-		exit_message(game, "\e[5;1;31mCould not read map file.\n\e[0m");
+		exit_message(game, BLINK RED "Could not read map file.\n" RESET);
 	while (++i < game->map->rows)
 	{
 		auto char *temp = get_next_line(fd);
 		if (!temp)
-			exit_message(game, "\e[5;1;31mCouldn't get lines from map.\n\e[0m");
+			exit_message(game, BLINK RED "Couldn't get lines from map.\n"RESET);
 		game->map->map_matrix[i] = ft_strtrim(temp, "\n");
 		if (!game->map->map_matrix[i])
-			exit_message(game, "\e[5;1;31mError in alloc map bytes.\n\e[0m");
+			exit_message(game, BLINK RED "Error in alloc map bytes.\n" RESET);
 		free(temp);
 	}
 	return (game->map->map_matrix[i] = NULL, close(fd), game->map);
