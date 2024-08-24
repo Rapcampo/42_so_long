@@ -24,7 +24,7 @@ void	destroy_map(t_map *map)
 void	destroy_images(t_game *game)
 {
 	auto int i = -1;
-	while (++i < NUM_ASSETS)
+	while (++i < MAX_SPRITES)
 		mlx_destroy_image(game->mlx_ptr, game->assets[i].img);
 	free(game->assets);
 }

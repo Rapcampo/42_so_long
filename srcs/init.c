@@ -14,13 +14,15 @@
 
 static int	get_num_lines(t_game *game, char *map_name)
 {
+	char	*temp;
+
 	auto int lines = 0;
 	auto int fd = open(map_name, O_RDONLY);
 	if (fd < 0)
 		exit_message(game, "\e[5;1;31mCould not read map file.\n\e[0m");
 	while (1)
 	{
-		auto char *temp = get_next_line(fd);
+		temp = get_next_line(fd);
 		if (!temp)
 			break ;
 		lines++;

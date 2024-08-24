@@ -53,7 +53,8 @@ int	put_game(t_game *game)
 	if (!check_move(game, game->next))
 		return (0);
 	game->moves++;
-	ft_printf("\e[4;1;32mMovements\e[0m = \e[1;35m%d\e[0m\n", game->moves);
+	ft_putstr_fd("\e[4;1;32mMovements\e[0m = \e[1;35m%d\e[0m", 1);
+	ft_putnbr_fd(game->moves, 1);
 	move_player(game);
 	return (0);
 }
