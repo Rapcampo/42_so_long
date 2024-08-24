@@ -77,8 +77,10 @@ static int	map_walls(t_map *map)
 
 static int	map_path(t_game *game)
 {
+	char	**map_matrix;
+
 	auto int i = -1;
-	auto char **map_matrix = malloc(sizeof(char *) * (game->map->rows + 1));
+	map_matrix = malloc(sizeof(char *) * (game->map->rows + 1));
 	if (!map_matrix)
 		exit_message(game, BLINK RED "Malloc Error.\n" RESET);
 	while (game->map->map_matrix[++i])

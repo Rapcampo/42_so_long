@@ -24,7 +24,7 @@
 
 // defines for assets
 
-# define MAX_SPRITES 7
+# define MAX_SPRITES 6
 # define BG_SPRITE "./sprites/floor.xpm"
 # define WALL_SPRITE "./sprites/wall.xpm"
 # define PLAYER_SPRITE "./sprites/player.xpm"
@@ -32,7 +32,7 @@
 # define COLLECT_SPRITE "./sprites/collectable.xpm"
 # define EXIT_SPRITE "./sprites/exit.xpm"
 # define OE_SPRITE "./prites/open_exit.xpm"
-# define SIZE 50 
+# define SIZE 32 
 
 // defines for print colours
 

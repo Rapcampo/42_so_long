@@ -25,12 +25,12 @@ void	move_player(t_game *game)
 		game->map->map_matrix[game->next.y][game->next.x] = PLAYER;
 	}
 	else if (pos(game, game->next) == EXIT)
-		game->map->map_matrix[game->next.y][game->next.x] = PLAYER_EXIT;
+		game->map->map_matrix[game->next.y][game->next.x] = EXIT;
 	else if (pos(game, game->next) == OPEN_EXIT)
 		quit(game);
 	else
 		game->map->map_matrix[game->next.y][game->next.x] = PLAYER;
-	if (game->map->map_matrix[game->curr.y][game->curr.x] == PLAYER_EXIT)
+	if (game->map->map_matrix[game->curr.y][game->curr.x] == EXIT)
 		game->map->map_matrix[game->curr.y][game->curr.x] = EXIT;
 	else
 		game->map->map_matrix[game->curr.y][game->curr.x] = FLOOR;
@@ -53,7 +53,6 @@ int	put_game(t_game *game)
 	if (!check_move(game, game->next))
 		return (0);
 	game->moves++;
-	ft_putstr_fd("\e[4;1;32mMovements\e[0m = \e[1;35m%d\e[0m", 1);
-	ft_putnbr_fd(game->moves, 1);
+	ft_printf(ULINE BLUE"Moves = %d\n"RESET, game->moves);
 	return (move_player(game), 0);
 }
