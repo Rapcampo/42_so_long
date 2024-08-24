@@ -23,16 +23,16 @@
 //# include <X11/keysym.h>
 
 // defines for assets
+
 # define MAX_SPRITES 7
-# define BG_SPRITE "./sprites/background.xpm"
+# define BG_SPRITE "./sprites/floor.xpm"
 # define WALL_SPRITE "./sprites/wall.xpm"
 # define PLAYER_SPRITE "./sprites/player.xpm"
 # define PE_SPRITE "./sprites/player_exit.xpm"
 # define COLLECT_SPRITE "./sprites/collectable.xpm"
 # define EXIT_SPRITE "./sprites/exit.xpm"
-# define OE_SPRITE "./sprites/open_exit.xpm"
+# define OE_SPRITE "./prites/open_exit.xpm"
 # define SIZE 48
-# define NUM_ASSETS 7
 
 // defines for print colours
 
@@ -48,7 +48,7 @@
 # define CYAN "\e[1;36m"
 # define WHITE "\e[1;37m"
 
-// struct for coordinates
+
 
 typedef struct s_point
 {
@@ -63,7 +63,7 @@ typedef struct s_assets
 	void	*img;
 	int		width;
 	int		height;
-}	t_assets;
+}			t_assets;
 
 
 // struct for map
