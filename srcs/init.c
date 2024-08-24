@@ -14,15 +14,13 @@
 
 static int	get_num_lines(t_game *game, char *map_name)
 {
-	char	*temp;
-
 	auto int lines = 0;
 	auto int fd = open(map_name, O_RDONLY);
 	if (fd < 0)
 		exit_message(game, "\e[5;1;31mCould not read map file.\n\e[0m");
 	while (1)
 	{
-		temp = get_next_line(fd);
+		auto char *temp = get_next_line(fd);
 		if (!temp)
 			break ;
 		lines++;
@@ -57,7 +55,7 @@ static	t_map	*read_map(t_game *game, char *map_name)
 	while (++i < game->map->rows)
 	{
 		auto char *temp = get_next_line(fd);
-		if (temp)
+		if (!temp)
 			exit_message(game, "\e[5;1;31mCouldn't get lines from map.\n\e[0m");
 		game->map->map_matrix[i] = ft_strtrim(temp, "\n");
 		if (!game->map->map_matrix[i])
