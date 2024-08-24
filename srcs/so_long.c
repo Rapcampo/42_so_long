@@ -60,19 +60,19 @@ void	load_images(t_game *game)
 	game->assets = malloc(MAX_SPRITES * sizeof(t_assets));
 	if (!game->assets)
 		exit_message(game, BLINK RED "Could not allocate images\n" RESET);
-	game->assets[F1].img = mlx_xpm_to_image(game->mlx_ptr, (char **)BG_SPRITE,
+	game->assets[F1].img = mlx_xpm_file_to_image(game->mlx_ptr, BG_SPRITE,
 			&game->assets[F1].width, &game->assets[F1].height);
-	game->assets[W1].img = mlx_xpm_to_image(game->mlx_ptr, (char **)WALL_SPRITE,
+	game->assets[W1].img = mlx_xpm_file_to_image(game->mlx_ptr, WALL_SPRITE,
 			&game->assets[W1].width, &game->assets[W1].height);
-	game->assets[P1].img = mlx_xpm_to_image(game->mlx_ptr, (char **)PLAYER_SPRITE,
+	game->assets[P1].img = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER_SPRITE,
 			&game->assets[P1].width, &game->assets[P1].height);
-	game->assets[P2].img = mlx_xpm_to_image(game->mlx_ptr, (char **) PE_SPRITE,
+	game->assets[P2].img = mlx_xpm_file_to_image(game->mlx_ptr, PE_SPRITE,
 			&game->assets[P2].width, &game->assets[P2].height);
-	game->assets[C1].img = mlx_xpm_to_image(game->mlx_ptr,(char **) COLLECT_SPRITE,
+	game->assets[C1].img = mlx_xpm_file_to_image(game->mlx_ptr, COLLECT_SPRITE,
 			&game->assets[C1].width, &game->assets[C1].height);
-	game->assets[E1].img = mlx_xpm_to_image(game->mlx_ptr,(char **) EXIT_SPRITE,
+	game->assets[E1].img = mlx_xpm_file_to_image(game->mlx_ptr, EXIT_SPRITE,
 			&game->assets[E1].width, &game->assets[E1].height);
-	game->assets[E2].img = mlx_xpm_to_image(game->mlx_ptr,(char **)OE_SPRITE,
+	game->assets[E2].img = mlx_xpm_file_to_image(game->mlx_ptr, OE_SPRITE,
 			&game->assets[E2].width, &game->assets[E2].height);
 }
 

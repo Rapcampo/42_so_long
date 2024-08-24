@@ -32,7 +32,7 @@
 # define COLLECT_SPRITE "./sprites/collectable.xpm"
 # define EXIT_SPRITE "./sprites/exit.xpm"
 # define OE_SPRITE "./prites/open_exit.xpm"
-# define SIZE 48
+# define SIZE 32 
 
 // defines for print colours
 
