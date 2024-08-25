@@ -24,15 +24,15 @@
 
 // defines for assets
 
-# define MAX_SPRITES 6
+# define MAX_SPRITES 7
 # define BG_SPRITE "./sprites/floor.xpm"
-# define WALL_SPRITE "./sprites/walls.xpm"
+# define WALL_SPRITE "./sprites/wall.xpm"
 # define PLAYER_SPRITE "./sprites/player.xpm"
-//# define PE_SPRITE "./sprites/player_exit.xpm"
-# define COLLECT_SPRITE "./sprites/burger.xpm"
-# define EXIT_SPRITE "./sprites/exit1.xpm"
-# define OE_SPRITE "./sprites/exit2.xpm"
-# define SIZE 48 
+# define PE_SPRITE "./sprites/player_exit.xpm"
+# define COLLECT_SPRITE "./sprites/collectable.xpm"
+# define EXIT_SPRITE "./sprites/exit.xpm"
+# define OE_SPRITE "./sprites/open_exit.xpm"
+# define SIZE 32
 
 // defines for print colours
 
@@ -106,7 +106,7 @@ typedef enum e_entity
 	COL = 'C',
 	EXIT = 'E',
 	PLAYER = 'P',
-//	PLAYER_EXIT = 'X',
+	PLAYER_EXIT = 'X',
 	OPEN_EXIT = 'O'
 }	t_entity;
 
@@ -131,7 +131,7 @@ typedef enum e_index
 	F1,
 	W1,
 	P1,
-//	P2,
+	P2,
 	C1,
 	E1,
 	E2,

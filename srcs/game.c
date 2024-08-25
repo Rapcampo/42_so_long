@@ -25,12 +25,12 @@ void	move_player(t_game *game)
 		game->map->map_matrix[game->next.y][game->next.x] = PLAYER;
 	}
 	else if (pos(game, game->next) == EXIT)
-		game->map->map_matrix[game->next.y][game->next.x] = PLAYER;
+		game->map->map_matrix[game->next.y][game->next.x] = PLAYER_EXIT;
 	else if (pos(game, game->next) == OPEN_EXIT)
 		quit(game);
 	else
 		game->map->map_matrix[game->next.y][game->next.x] = PLAYER;
-	if (game->map->map_matrix[game->curr.y][game->curr.x] == EXIT)
+	if (game->map->map_matrix[game->curr.y][game->curr.x] == PLAYER_EXIT)
 		game->map->map_matrix[game->curr.y][game->curr.x] = EXIT;
 	else
 		game->map->map_matrix[game->curr.y][game->curr.x] = FLOOR;
@@ -41,8 +41,7 @@ void	move_player(t_game *game)
 
 int	check_move(t_game *game, t_point next)
 {
-	if (game->map->map_matrix[next.y][next.x] == WALL ||
-			game->map->map_matrix[next.y][next.x] == EXIT)
+	if (game->map->map_matrix[next.y][next.x] == WALL)
 		return (0);
 	else if (next.y == game->curr.y && next.x == game->curr.x)
 		return (0);

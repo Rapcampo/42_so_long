@@ -29,14 +29,12 @@ void	put_images(t_game *game, t_point pos)
 		sprites = game->assets[W1];
 	if (game->map->map_matrix[pos.y][pos.x] == PLAYER)
 		sprites = game->assets[P1];
-//	if (game->map->map_matrix[pos.y][pos.x] == PLAYER_EXIT)
-//		sprites = game->assets[P2];
+	if (game->map->map_matrix[pos.y][pos.x] == PLAYER_EXIT)
+		sprites = game->assets[P2];
 	if (game->map->map_matrix[pos.y][pos.x] == COL)
 		sprites = game->assets[C1];
 	if (game->map->map_matrix[pos.y][pos.x] == EXIT)
 		sprites = game->assets[E1];
-//	if (game->map->map_matrix[pos.y][pos.x] == OPEN_EXIT)
-//		sprites = game->assets[E2];
 	if (game->map->map_matrix[pos.y][pos.x] == FLOOR)
 		sprites = game->assets[F1];
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprites.img,
@@ -66,8 +64,8 @@ void	load_images(t_game *game)
 			&game->assets[W1].width, &game->assets[W1].height);
 	game->assets[P1].img = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER_SPRITE,
 			&game->assets[P1].width, &game->assets[P1].height);
-//	game->assets[P2].img = mlx_xpm_file_to_image(game->mlx_ptr, PE_SPRITE,
-//			&game->assets[P2].width, &game->assets[P2].height);
+	game->assets[P2].img = mlx_xpm_file_to_image(game->mlx_ptr, PE_SPRITE,
+			&game->assets[P2].width, &game->assets[P2].height);
 	game->assets[C1].img = mlx_xpm_file_to_image(game->mlx_ptr, COLLECT_SPRITE,
 			&game->assets[C1].width, &game->assets[C1].height);
 	game->assets[E1].img = mlx_xpm_file_to_image(game->mlx_ptr, EXIT_SPRITE,
