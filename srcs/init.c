@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-static int	get_num_lines(t_game *game, char *map_name)
+int	get_num_lines(t_game *game, char *map_name)
 {
 	auto int lines = 0;
 	auto int fd = open(map_name, O_RDONLY);
@@ -29,7 +29,7 @@ static int	get_num_lines(t_game *game, char *map_name)
 	return (close(fd), lines);
 }
 
-static t_map	*new_map(unsigned int colums, unsigned int rows)
+t_map	*new_map(unsigned int colums, unsigned int rows)
 {
 	auto t_map * map = ft_calloc(1, sizeof(t_map));
 	if (!map)
@@ -43,7 +43,7 @@ static t_map	*new_map(unsigned int colums, unsigned int rows)
 	return (map->cols = colums, map->rows = rows, map);
 }
 
-static	t_map	*read_map(t_game *game, char *map_name)
+t_map	*read_map(t_game *game, char *map_name)
 {
 	auto int i = -1;
 	game->map = new_map(0, get_num_lines(game, map_name));

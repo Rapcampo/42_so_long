@@ -27,7 +27,7 @@ void	exit_message(t_game *game, char *message)
 
 int	quit(t_game *game)
 {
-	if (game->map->map_matrix[game->next.y][game->next.x] == E2)
+	if (game->map->map_matrix[game->next.y][game->next.x] == OPEN_EXIT)
 		ft_putstr_fd(BLINK GREEN "🎉🎉 YOU WIN!!! 🎉🎉\n" RESET, 1);
 	else
 		ft_putstr_fd(BLINK RED "Game Interrpted 🛑\n" RESET, 1);

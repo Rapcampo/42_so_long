@@ -25,7 +25,7 @@ void	move_player(t_game *game)
 		game->map->map_matrix[game->next.y][game->next.x] = PLAYER;
 	}
 	else if (pos(game, game->next) == EXIT)
-		game->map->map_matrix[game->next.y][game->next.x] = EXIT;
+		game->map->map_matrix[game->next.y][game->next.x] = PLAYER;
 	else if (pos(game, game->next) == OPEN_EXIT)
 		quit(game);
 	else

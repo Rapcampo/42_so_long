@@ -51,7 +51,7 @@ static int	map_components(t_game *game)
 	return (0);
 }
 
-static int	map_walls(t_map *map)
+int	map_walls(t_map *map)
 {
 	auto unsigned int i = -1;
 	while (map->map_matrix[++i])
@@ -75,7 +75,7 @@ static int	map_walls(t_map *map)
 	return (1);
 }
 
-static int	map_path(t_game *game)
+int	map_path(t_game *game)
 {
 	char	**map_matrix;
 
