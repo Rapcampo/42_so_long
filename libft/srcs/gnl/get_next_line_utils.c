@@ -86,7 +86,8 @@ char	*ft_get_strjoin(char *s1, char *s2)
 		s1 = (char *)ft_get_calloc(1, sizeof(char));
 	if (!s1 || !s2)
 		return (NULL);
-	res = ft_get_calloc(ft_get_strlen(s1) + ft_get_strlen(s2) + 1, sizeof(char));
+	res = ft_get_calloc(ft_get_strlen(s1)
+			+ ft_get_strlen(s2) + 1, sizeof(char));
 	if (!res)
 		return (NULL);
 	while (s1[++i])

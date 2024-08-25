@@ -48,8 +48,6 @@
 # define CYAN "\e[1;36m"
 # define WHITE "\e[1;37m"
 
-
-
 typedef struct s_point
 {
 	unsigned int	x;
@@ -64,7 +62,6 @@ typedef struct s_assets
 	int		width;
 	int		height;
 }			t_assets;
-
 
 // struct for map
 
@@ -156,17 +153,17 @@ typedef enum e_event
 
 //error checking and map parsing
 
-void	put_images(t_game *game, t_point pos);
-void	floodfill(t_game *game, char **matrix, t_point curr);
-void	map_assets(t_game *game);
-void	valid_map(t_game *game);
+void		put_images(t_game *game, t_point pos);
+void		floodfill(t_game *game, char **matrix, t_point curr);
+void		map_assets(t_game *game);
+void		valid_map(t_game *game);
 
 //free and memory management
 
-void	destroy_matrix(char **map_matrix);
-void	destroy_map(t_map *map);
-void	destroy_images(t_game *game);
-void	destroy_game(t_game *game);
+void		destroy_matrix(char **map_matrix);
+void		destroy_map(t_map *map);
+void		destroy_images(t_game *game);
+void		destroy_game(t_game *game);
 
 //game functions
 
