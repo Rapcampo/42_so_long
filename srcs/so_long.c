@@ -35,6 +35,8 @@ void	put_images(t_game *game, t_point pos)
 		sprites = game->assets[C1];
 	if (game->map->map_matrix[pos.y][pos.x] == EXIT)
 		sprites = game->assets[E1];
+	if (game->map->map_matrix[pos.y][pos.x] == OPEN_EXIT)
+		sprites = game->assets[E2];
 	if (game->map->map_matrix[pos.y][pos.x] == FLOOR)
 		sprites = game->assets[F1];
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprites.img,
