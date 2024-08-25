@@ -42,10 +42,9 @@ void	destroy_matrix(char **map_matrix)
 void	map_assets(t_game *game)
 {
 	auto int i = -1;
-	auto int j = -1;
 	while (game->map->map_matrix[++i])
 	{
-		j = -1;
+		auto int j = -1;
 		while (game->map->map_matrix[i][++j])
 		{
 			if (game->map->map_matrix[i][j] == 'P')

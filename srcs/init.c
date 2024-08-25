@@ -45,7 +45,7 @@ t_map	*new_map(unsigned int colums, unsigned int rows)
 
 t_map	*read_map(t_game *game, char *map_name)
 {
-	auto int i = -1;
+	auto unsigned int i = -1;
 	game->map = new_map(0, get_num_lines(game, map_name));
 	if (!game->map)
 		exit_message(game, BLINK RED "Map could not be alloc'ed.\n" RESET);

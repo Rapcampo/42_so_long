@@ -66,8 +66,8 @@ void	load_images(t_game *game)
 			&game->assets[W1].width, &game->assets[W1].height);
 	game->assets[P1].img = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER_SPRITE,
 			&game->assets[P1].width, &game->assets[P1].height);
-	game->assets[P2].img = mlx_xpm_file_to_image(game->mlx_ptr, PE_SPRITE,
-			&game->assets[P2].width, &game->assets[P2].height);
+//	game->assets[P2].img = mlx_xpm_file_to_image(game->mlx_ptr, PE_SPRITE,
+//			&game->assets[P2].width, &game->assets[P2].height);
 	game->assets[C1].img = mlx_xpm_file_to_image(game->mlx_ptr, COLLECT_SPRITE,
 			&game->assets[C1].width, &game->assets[C1].height);
 	game->assets[E1].img = mlx_xpm_file_to_image(game->mlx_ptr, EXIT_SPRITE,

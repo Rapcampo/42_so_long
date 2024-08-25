@@ -41,7 +41,8 @@ void	move_player(t_game *game)
 
 int	check_move(t_game *game, t_point next)
 {
-	if (game->map->map_matrix[next.y][next.x] == WALL)
+	if (game->map->map_matrix[next.y][next.x] == WALL ||
+			game->map->map_matrix[next.y][next.x] == EXIT)
 		return (0);
 	else if (next.y == game->curr.y && next.x == game->curr.x)
 		return (0);

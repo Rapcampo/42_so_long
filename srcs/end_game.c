@@ -16,7 +16,7 @@ void	destroy_map(t_map *map)
 {
 	if (!map)
 		return ;
-	if (!map->map_matrix)
+	if (map->map_matrix)
 		destroy_matrix(map->map_matrix);
 	free(map);
 }
